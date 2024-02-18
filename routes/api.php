@@ -21,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //add route for the index method in the api controller
 Route::get('projects', [ProjectController::class, 'index']);
+//add route for the show method in the api controller
+Route::get('projects/{slug}', [ProjectController::class, 'show']);

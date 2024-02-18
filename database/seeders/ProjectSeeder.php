@@ -18,7 +18,7 @@ class ProjectSeeder extends Seeder
     public function run(Faker $faker): void
     {
 
-        Project::truncate();
+        // Project::truncate();
 
         for ($i = 0; $i < 10; $i++) {
 
