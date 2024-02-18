@@ -2,7 +2,9 @@
 
 ## Description
 
-This portfolio project is a showcase of personal projects and skills. It features an admin area, created using Laravel's built-in authentication system, where the portfolio owner can manage a list of repositories. These repositories represent the projects that are displayed on the portfolio.
+This portfolio project is a showcase of personal projects and skills. It features an admin area, created using Laravel's built-in authentication system, where the portfolio owner can manage a list of repositories. These repositories represent the projects that are displayed on the portfolio. 
+
+The project is then complemented by a front-end application in Vue.
 
 ## Tech Stack
 
