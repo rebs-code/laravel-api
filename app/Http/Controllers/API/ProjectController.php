@@ -10,11 +10,17 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        //query to get all projects
-        // $projects = Project::all();
 
-        //query to get all projects with pagination 10
-        $projects = Project::paginate(9);
+        request()->validate([
+            'key' => ['string', 'min:3', 'max:255', 'nullable'],
+        ]);
+
+        if (request()->key) {
+            $projects = Project::where('name', 'LIKE', '%' . request()->key . '%')->orWhere('description', 'LIKE', '%' . request()->key . '%')->paginate(9);
+        } else {
+            //query to get all projects with pagination 9
+            $projects = Project::paginate(9);
+        }
 
         return response()->json([
             //add a status key to the response
