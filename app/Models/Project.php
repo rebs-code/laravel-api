@@ -23,4 +23,10 @@ class Project extends Model
         //a project can have many technologies
         return $this->belongsToMany(Technology::class);
     }
+
+    public function comments()
+    {
+        //a project can have many comments
+        return $this->hasMany(Comment::class);
+    }
 }

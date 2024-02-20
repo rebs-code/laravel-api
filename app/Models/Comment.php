@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
+
+    public function project()
+    {
+        //a comment belongs to a project
+        return $this->belongsTo(Project::class);
+    }
 }
