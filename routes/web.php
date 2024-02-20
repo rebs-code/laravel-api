@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TechnologyController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,9 @@ Route::middleware(['auth', 'verified'])
 
         //technologies routes
         Route::resource('technologies', TechnologyController::class)->parameters(['technologies' => 'technology:slug']);
+
+        //comments routes
+        Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
     });
 
 Route::middleware('auth')->group(function () {

@@ -19,15 +19,26 @@
                 <p>{{ $project->slug }}</p>
                 <div>
                     <h6>Comments</h6>
-                    <ul>
-                        @foreach ($project->comments as $comment)
-                            <li>
-                                <div>
-                                    <strong>{{ $comment->author }}:</strong>
-                                    {{ $comment->content }}
-                                </div>
-                            </li>
-                        @endforeach
+                    @if ($project->comments->count())
+                        <ul>
+                            @foreach ($project->comments as $comment)
+                                <li>
+                                    <div>
+                                        <strong>{{ $comment->author ?: 'Anonymous' }}:</strong>
+                                        {{ $comment->content }}
+                                    </div>
+                                    {{-- delete button --}}
+                                    <form action="{{ route('admin.comments.destroy', $comment) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @else
+                        <p>No comments yet</p>
+                    @endif
                 </div>
                 <a href="{{ route('admin.projects.index') }}" role="button" class="btn btn-primary">Back</a>
             </div>
