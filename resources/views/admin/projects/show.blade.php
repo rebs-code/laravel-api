@@ -17,6 +17,18 @@
                 </div>
                 <p>{{ $project->repo_link }}</p>
                 <p>{{ $project->slug }}</p>
+                <div>
+                    <h6>Comments</h6>
+                    <ul>
+                        @foreach ($project->comments as $comment)
+                            <li>
+                                <div>
+                                    <strong>{{ $comment->author }}:</strong>
+                                    {{ $comment->content }}
+                                </div>
+                            </li>
+                        @endforeach
+                </div>
                 <a href="{{ route('admin.projects.index') }}" role="button" class="btn btn-primary">Back</a>
             </div>
         </div>
