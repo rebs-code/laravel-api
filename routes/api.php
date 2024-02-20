@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\API\ProjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('projects', [ProjectController::class, 'index']);
 //add route for the show method in the api controller
 Route::get('projects/{slug}', [ProjectController::class, 'show']);
+//comments
+Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
